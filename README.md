@@ -66,9 +66,9 @@ This project studies dimensionality reduction and deep operator learning. It cov
 ### Chapter 4 — Heat Equation
 | Model | Input Dim | MSE |
 |---|---|---|
-| Standard FNN | 100 sensors | 2.10×10⁻¹ |
-| Standard DeepONet | 100 sensors | 1.04×10⁻¹ |
-| **PCA-DeepONet** | **15 components** | **1.10×10⁻¹** |
+| Standard FNN | 120 sensors | 3.14 × 10⁻⁵ |
+| Standard DeepONet | 120 sensors | 5.76 × 10⁻⁶ |
+| **PCA-DeepONet** | **20 components** | **9.87 × 10⁻⁵** |
 
 ---
 
