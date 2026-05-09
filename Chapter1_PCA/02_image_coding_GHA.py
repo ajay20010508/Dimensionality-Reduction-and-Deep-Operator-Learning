@@ -1,7 +1,7 @@
 """
 Chapter 1 - Case Study 2: Image Coding using Generalized Hebbian Algorithm (GHA)
 ==================================================================================
-Project : Dimensionality Reduction and Operator Learning
+Project : Dimensionality Reduction and Deep Operator Learning
 Author  : Ajay Yadav (Roll No. 24MA05017)
 Institute: IIT Bhubaneswar
 Supervisor: Dr. Amar Deep Sarkar
