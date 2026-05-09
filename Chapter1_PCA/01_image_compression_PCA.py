@@ -1,7 +1,7 @@
 """
 Chapter 1 - Case Study 1: Image Compression using PCA (Perturbation Theory)
 =============================================================================
-Project : Dimensionality Reduction and Operator Learning
+Project : Dimensionality Reduction and Deep Operator Learning
 Author  : Ajay Yadav (Roll No. 24MA05017)
 Institute: IIT Bhubaneswar
 Supervisor: Dr. Amar Deep Sarkar
