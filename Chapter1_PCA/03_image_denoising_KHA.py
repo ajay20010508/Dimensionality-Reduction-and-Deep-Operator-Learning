@@ -1,7 +1,7 @@
 """
 Chapter 1 - Case Study 3: Image Denoising using Kernel Hebbian Algorithm (KHA)
 ================================================================================
-Project : Dimensionality Reduction and Operator Learning
+Project : Dimensionality Reduction and Deep Operator Learning
 Author  : Ajay Yadav (Roll No. 24MA05017)
 Institute: IIT Bhubaneswar
 Supervisor: Dr. Amar Deep Sarkar
