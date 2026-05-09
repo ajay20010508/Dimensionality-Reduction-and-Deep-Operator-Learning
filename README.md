@@ -10,7 +10,7 @@
 
 ## Abstract
 
-This project studies dimensionality reduction and deep operator learning. It covers PCA (via perturbation theory), Generalized Hebbian Algorithm (GHA), Kernel Hebbian Algorithm (KHA), the Universal Approximation Theorem (for functions, functionals, and operators), and Deep Operator Networks (DeepONet). A benchmark experiment on heat transfer through a 1D rod demonstrates that combining PCA (85% reduction) with DeepONet achieves competitive accuracy (MSE ≈ 1.10×10⁻¹) against a full-sensor DeepONet (1.04×10⁻¹), while significantly outperforming a standard FNN (2.10×10⁻¹).
+This project studies dimensionality reduction and deep operator learning. It covers PCA (via perturbation theory), Generalized Hebbian Algorithm (GHA), Kernel Hebbian Algorithm (KHA), the Universal Approximation Theorem (for functions, functionals, and operators), and Deep Operator Networks (DeepONet). A benchmark experiment on heat transfer through a 1D rod demonstrates that combining PCA (80% reduction) with DeepONet achieves competitive accuracy (MSE ≈ 1.10×10⁻¹) against a full-sensor DeepONet (1.04×10⁻¹), while significantly outperforming a standard FNN (2.10×10⁻¹).
 
 ---
 
