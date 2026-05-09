@@ -1,7 +1,7 @@
 """
 Chapter 3 - Experiment 3: FNN vs Stacked/Unstacked DeepONet with/without Bias (Linear ODE)
 ============================================================================================
-Project : Dimensionality Reduction and Operator Learning
+Project : Dimensionality Reduction and Deep Operator Learning
 Author  : Ajay Yadav (Roll No. 24MA05017)
 Institute: IIT Bhubaneswar
 Supervisor: Dr. Amar Deep Sarkar
