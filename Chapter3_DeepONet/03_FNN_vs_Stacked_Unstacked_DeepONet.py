@@ -66,23 +66,23 @@ Xb_te, Xt_te, Y_te_don = make_don_data(f_test,  u_test)
 class FNN(nn.Module):
     def __init__(self, in_dim, use_bias=True):
         super().__init__()
-        self.net = nn.Sequential(nn.Linear(in_dim,40,bias=use_bias),nn.Tanh(),nn.Linear(40,40,bias=use_bias),nn.Tanh(),nn.Linear(40,40,bias=use_bias),nn.Tanh(),nn.Linear(40,1,bias=use_bias))
+        self.net = nn.Sequential(nn.Linear(in_dim,20,bias=use_bias),nn.Tanh(),nn.Linear(20,20,bias=use_bias),nn.Tanh(),nn.Linear(20,20,bias=use_bias),nn.Tanh(),nn.Linear(20,1,bias=use_bias))
     def forward(self,x): return self.net(x)
 
 class BranchNet(nn.Module):
     def __init__(self,in_dim,out_dim,use_bias=True):
         super().__init__()
-        self.net=nn.Sequential(nn.Linear(in_dim,40,bias=use_bias),nn.Tanh(),nn.Linear(40,40,bias=use_bias),nn.Tanh(),nn.Linear(40,out_dim,bias=use_bias))
+        self.net=nn.Sequential(nn.Linear(in_dim,20,bias=use_bias),nn.Tanh(),nn.Linear(20,20,bias=use_bias),nn.Tanh(),nn.Linear(20,out_dim,bias=use_bias))
     def forward(self,x): return self.net(x)
 
 class TrunkNet(nn.Module):
     def __init__(self,out_dim,use_bias=True):
         super().__init__()
-        self.net=nn.Sequential(nn.Linear(1,40,bias=use_bias),nn.Tanh(),nn.Linear(40,40,bias=use_bias),nn.Tanh(),nn.Linear(40,40,bias=use_bias),nn.Tanh(),nn.Linear(40,out_dim,bias=use_bias))
+        self.net=nn.Sequential(nn.Linear(1,20,bias=use_bias),nn.Tanh(),nn.Linear(20,20,bias=use_bias),nn.Tanh(),nn.Linear(20,20,bias=use_bias),nn.Tanh(),nn.Linear(20,out_dim,bias=use_bias))
     def forward(self,x): return self.net(x)
 
 class UnstackedDeepONet(nn.Module):
-    def __init__(self,m,p=40,use_bias=True):
+    def __init__(self,m,p=20,use_bias=True):
         super().__init__()
         self.branch=BranchNet(m,p,use_bias); self.trunk=TrunkNet(p,use_bias)
         self.use_bias_term=use_bias
@@ -94,11 +94,11 @@ class UnstackedDeepONet(nn.Module):
 class SmallBranch(nn.Module):
     def __init__(self,in_dim,use_bias=True):
         super().__init__()
-        self.net=nn.Sequential(nn.Linear(in_dim,40,bias=use_bias),nn.Tanh(),nn.Linear(40,40,bias=use_bias),nn.Tanh(),nn.Linear(40,1,bias=use_bias))
+        self.net=nn.Sequential(nn.Linear(in_dim,20,bias=use_bias),nn.Tanh(),nn.Linear(20,20,bias=use_bias),nn.Tanh(),nn.Linear(20,1,bias=use_bias))
     def forward(self,x): return self.net(x)
 
 class StackedDeepONet(nn.Module):
-    def __init__(self,m,p=40,use_bias=True):
+    def __init__(self,m,p=20,use_bias=True):
         super().__init__()
         self.branches=nn.ModuleList([SmallBranch(m,use_bias) for _ in range(p)])
         self.trunk=TrunkNet(p,use_bias); self.use_bias_term=use_bias
@@ -126,10 +126,10 @@ results_train, results_test = {}, {}
 for label, model, mtype, X1t, X2t, Y_t, X1e, X2e, Y_e in [
     ("FNN + Bias",       FNN(n_sensor+1,True),             "fnn", X_tr_fnn, None,  Y_tr_fnn, X_te_fnn, None,  Y_te_fnn),
     ("FNN - Bias",       FNN(n_sensor+1,False),            "fnn", X_tr_fnn, None,  Y_tr_fnn, X_te_fnn, None,  Y_te_fnn),
-    ("Unstacked + Bias", UnstackedDeepONet(n_sensor,40,True), "don", Xb_tr, Xt_tr, Y_tr_don, Xb_te, Xt_te, Y_te_don),
-    ("Unstacked - Bias", UnstackedDeepONet(n_sensor,40,False),"don", Xb_tr, Xt_tr, Y_tr_don, Xb_te, Xt_te, Y_te_don),
-    ("Stacked + Bias",   StackedDeepONet(n_sensor,40,True),  "don", Xb_tr, Xt_tr, Y_tr_don, Xb_te, Xt_te, Y_te_don),
-    ("Stacked - Bias",   StackedDeepONet(n_sensor,40,False), "don", Xb_tr, Xt_tr, Y_tr_don, Xb_te, Xt_te, Y_te_don),
+    ("Unstacked + Bias", UnstackedDeepONet(n_sensor,20,True), "don", Xb_tr, Xt_tr, Y_tr_don, Xb_te, Xt_te, Y_te_don),
+    ("Unstacked - Bias", UnstackedDeepONet(n_sensor,20,False),"don", Xb_tr, Xt_tr, Y_tr_don, Xb_te, Xt_te, Y_te_don),
+    ("Stacked + Bias",   StackedDeepONet(n_sensor,20,True),  "don", Xb_tr, Xt_tr, Y_tr_don, Xb_te, Xt_te, Y_te_don),
+    ("Stacked - Bias",   StackedDeepONet(n_sensor,20,False), "don", Xb_tr, Xt_tr, Y_tr_don, Xb_te, Xt_te, Y_te_don),
 ]:
     print(f"Training {label}...")
     tr, te = train_model(model, X1t, X2t, Y_t, X1e, X2e, Y_e, mtype)
