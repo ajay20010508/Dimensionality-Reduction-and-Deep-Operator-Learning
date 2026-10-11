@@ -312,4 +312,3 @@ axes[1, 1].set_ylabel('Seconds'); axes[1, 1].grid(True)
 
 plt.tight_layout()
 plt.show()
-```[cite: 135, 181, 182, 183]
